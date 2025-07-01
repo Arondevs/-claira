@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Head from 'next/head';
+import SiteNav from "@/components/layout/SiteNav";
 
 // Fade-in on scroll (matches homepage/waitlist)
 function useRevealOnScroll() {
@@ -111,32 +112,6 @@ export default function FeaturesPage() {
   useRevealOnScroll();
   useScrollWordAnimation();
   
-  const [navVisible, setNavVisible] = useState(true);
-  const lastScrollY = useRef(0);
-  const ticking = useRef(false);
-  
-  useEffect(() => {
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          if (currentScrollY <= 0) {
-            setNavVisible(true);
-          } else if (currentScrollY > lastScrollY.current) {
-            setNavVisible(false);
-          } else {
-            setNavVisible(true);
-          }
-          lastScrollY.current = currentScrollY;
-          ticking.current = false;
-        });
-        ticking.current = true;
-      }
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
       <Head>
@@ -147,23 +122,7 @@ export default function FeaturesPage() {
       </Head>
       <div className="min-h-screen w-full bg-cla-whitepink flex flex-col" style={{ minHeight: "100vh" }}>
         {/* Navigation Bar */}
-        <header className={`w-full bg-transparent z-20 fixed top-0 left-0 nav-bar ${navVisible ? "nav-visible" : "nav-hidden"}`} style={{ height: 64, paddingTop: 10 }}>
-          <nav className="max-w-[1440px] mx-auto flex items-center justify-between px-12 md:px-24" style={{ height: 64 }}>
-            <a href="/" className="flex items-center text-[1.35rem] font-semibold tracking-tight text-black logo-font mr-12" style={{ letterSpacing: "-0.01em", fontWeight: 600 }}>
-              Claira
-            </a>
-            <div className="hidden md:flex items-center space-x-12 text-[0.97rem] font-medium nav-links">
-              <a href="/" className="cluely-nav-link">Home</a>
-              <a href="/features" className="cluely-nav-link active">Features</a>
-              <a href="/early-access" className="cluely-nav-link">Early Access</a>
-            </div>
-            <div className="flex items-center space-x-7">
-              <a href="/early-access" className="modern-black-btn" style={{ minWidth: 220 }}>
-                Get Early Access
-              </a>
-            </div>
-          </nav>
-        </header>
+        <SiteNav active="features" />
         {/* Main Content */}
         <main className="flex flex-col items-center justify-center flex-1 px-4 pt-[180px] pb-[120px]" style={{ minHeight: 'calc(100vh - 80px)' }}>
           <div className="animated-text-section reveal" data-scroll-text>

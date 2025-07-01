@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import Head from 'next/head';
+import SiteNav from "@/components/layout/SiteNav";
 
 function useRevealOnScroll() {
   useEffect(() => {
@@ -34,33 +35,6 @@ function scrollToSection(id: string) {
 export default function EarlyAccessPage() {
   useRevealOnScroll();
   
-  // Nav hide/show on scroll (copied from homepage)
-  const [navVisible, setNavVisible] = useState(true);
-  const lastScrollY = useRef(0);
-  const ticking = useRef(false);
-  
-  useEffect(() => {
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          if (currentScrollY <= 0) {
-            setNavVisible(true);
-          } else if (currentScrollY > lastScrollY.current) {
-            setNavVisible(false);
-          } else {
-            setNavVisible(true);
-          }
-          lastScrollY.current = currentScrollY;
-          ticking.current = false;
-        });
-        ticking.current = true;
-      }
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   // Form state with Supabase integration
   const [formData, setFormData] = useState({
     email: '',
@@ -118,28 +92,8 @@ export default function EarlyAccessPage() {
         <meta property="og:description" content="Join the waitlist for early access to Claira, your AI women's health companion." />
       </Head>
       <div className="min-h-screen w-full bg-cla-whitepink flex flex-col" style={{ minHeight: "100vh" }}>
-        {/* Navigation Bar (copied from homepage) */}
-        <header className={`w-full bg-transparent z-20 fixed top-0 left-0 nav-bar ${navVisible ? "nav-visible" : "nav-hidden"}`} style={{ height: 64, paddingTop: 10 }}>
-          <nav className="max-w-[1440px] mx-auto flex items-center justify-between px-12 md:px-24" style={{ height: 64 }}>
-            {/* Logo */}
-            <a href="/" className="flex items-center text-[1.35rem] font-semibold tracking-tight text-black logo-font mr-12" style={{ letterSpacing: '-0.01em', fontWeight: 600 }}>
-              Claira
-            </a>
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-12 text-[0.97rem] font-medium nav-links">
-              <a href="/" className="cluely-nav-link">Home</a>
-              <a href="/features" className="cluely-nav-link">Features</a>
-              <a href="/early-access" className="cluely-nav-link active">Early Access</a>
-            </div>
-            {/* Right Side */}
-            <div className="flex items-center space-x-7">
-              <a href="/early-access" className="cluely-signup-btn flex items-center gap-1">
-                Sign up
-              </a>
-            </div>
-          </nav>
-        </header>
-
+        {/* Navigation Bar */}
+        <SiteNav active="early-access" />
         {/* Main Content */}
         <main className="flex flex-col items-center justify-center flex-1 px-8 pt-[100px] pb-[60px] max-w-3xl mx-auto">
           <h1 className="text-[2.5rem] md:text-[3.5rem] font-normal leading-tight mb-[60px] text-black text-center tracking-tight">
