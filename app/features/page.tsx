@@ -128,19 +128,19 @@ export default function FeaturesPage() {
           <div className="animated-text-section reveal" data-scroll-text>
             <h1 className="feature-title text-center">
               <div className="mb-4">
-                <span className="scroll-word">The</span>
-                <span className="scroll-word">Future</span>
-                <span className="scroll-word">of</span>
-                <span className="scroll-word">Women's</span>
+                <span className="scroll-word">The</span>{' '}
+                <span className="scroll-word">Future</span>{' '}
+                <span className="scroll-word">of</span>{' '}
+                <span className="scroll-word">Women's</span>{' '}
                 <span className="scroll-word">Health</span>
               </div>
               <div className="mb-4">
-                <span className="scroll-word">Has</span>
-                <span className="scroll-word">a</span>
+                <span className="scroll-word">Has</span>{' '}
+                <span className="scroll-word">a</span>{' '}
                 <span className="scroll-word">Name</span>
               </div>
               <div>
-                <span className="scroll-word">—</span>
+                <span className="scroll-word">—</span>{' '}
                 <span className="scroll-word">Claira.</span>
               </div>
             </h1>

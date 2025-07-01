@@ -60,9 +60,11 @@ export default function SiteNav({ active }: { active?: "home" | "features" | "ea
         </div>
         {/* Right Side */}
         <div className="flex items-center space-x-7">
-          <a href="/early-access" className="modern-black-btn">
-            Sign Up
-          </a>
+          {active !== "early-access" && (
+            <a href="/early-access" className="modern-black-btn">
+              Sign Up
+            </a>
+          )}
           {/* Hamburger Icon (Mobile Only) */}
           <button
             className="md:hidden ml-2 flex flex-col justify-center items-center w-8 h-8 focus:outline-none"
@@ -91,7 +93,6 @@ export default function SiteNav({ active }: { active?: "home" | "features" | "ea
               <a href="/" className="text-base font-semibold text-black py-2 px-3 rounded hover:bg-gray-100 transition-all" onClick={() => setMobileMenuOpen(false)}>Home</a>
               <a href="/features" className="text-base font-semibold text-black py-2 px-3 rounded hover:bg-gray-100 transition-all" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/early-access" className="text-base font-semibold text-black py-2 px-3 rounded hover:bg-gray-100 transition-all" onClick={() => setMobileMenuOpen(false)}>Early Access</a>
-              <a href="/early-access" className="modern-black-btn w-full mt-2" onClick={() => setMobileMenuOpen(false)}>Sign Up</a>
             </nav>
           </div>
           <style jsx>{`
