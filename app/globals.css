@@ -324,4 +324,24 @@ button:active {
   line-height: 1.1;
   max-width: 600px;
   margin: 0 auto;
+}
+
+.modern-black-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+  cursor: pointer;
+  display: inline-block;
+}
+.modern-black-btn:hover {
+  background: #222 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px) scale(1.03);
 } 

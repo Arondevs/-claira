@@ -82,9 +82,11 @@ export default function HomePage() {
             </div>
             {/* Right Side */}
             <div className="flex items-center space-x-7">
-              <a href="/early-access" className="cluely-signup-btn flex items-center gap-1">
-                Sign up
-                <span className="inline-block text-[1.1em] ml-1" aria-hidden="true">↗</span>
+              <a
+                href="/early-access"
+                className="modern-black-btn"
+              >
+                Sign Up
               </a>
             </div>
           </nav>

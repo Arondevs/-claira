@@ -158,9 +158,8 @@ export default function FeaturesPage() {
               <a href="/early-access" className="cluely-nav-link">Early Access</a>
             </div>
             <div className="flex items-center space-x-7">
-              <a href="/early-access" className="cluely-signup-btn flex items-center gap-1 transparent">
+              <a href="/early-access" className="modern-black-btn" style={{ minWidth: 220 }}>
                 Get Early Access
-                <span className="inline-block text-[1.1em] ml-1" aria-hidden="true">↗</span>
               </a>
             </div>
           </nav>
@@ -431,7 +430,7 @@ export default function FeaturesPage() {
                   <span className="scroll-word">Claira.</span>
                 </p>
               </div>
-              <a href="/early-access" className="cluely-cta-btn" style={{ minWidth: 220 }}>
+              <a href="/early-access" className="modern-black-btn" style={{ minWidth: 220 }}>
                 Get Early Access
               </a>
             </section>

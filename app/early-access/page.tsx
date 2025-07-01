@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-// import { supabase } from "../../lib/supabase";
+import { supabase } from "../../lib/supabase";
 import Head from 'next/head';
 
 function useRevealOnScroll() {
@@ -81,16 +81,21 @@ export default function EarlyAccessPage() {
         throw new Error('Please enter a valid email address');
       }
 
-      // Temporary: Just log to console instead of saving to database
-      console.log('Form submitted:', formData);
-      
-      // Success message
+      // Save to Supabase
+      const { error } = await supabase.from('waitlist_signups').insert([
+        {
+          email: formData.email,
+          name: formData.name,
+          challenge: formData.challenge,
+        },
+      ]);
+      if (error) throw error;
+
       setSubmitMessage('🎉 Welcome to the waitlist! We\'ll be in touch soon.');
       setFormData({ email: '', name: '', challenge: '' });
-
     } catch (error: any) {
       console.error('Signup error:', error);
-      setSubmitMessage(`❌ ${error.message}`);
+      setSubmitMessage(`❌ ${error.message || 'Signup failed. Please try again.'}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -130,7 +135,6 @@ export default function EarlyAccessPage() {
             <div className="flex items-center space-x-7">
               <a href="/early-access" className="cluely-signup-btn flex items-center gap-1">
                 Sign up
-                <span className="inline-block text-[1.1em] ml-1" aria-hidden="true">↗</span>
               </a>
             </div>
           </nav>
@@ -196,9 +200,9 @@ export default function EarlyAccessPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full modern-button text-black font-normal py-2.5 text-sm transition-all duration-200 bg-transparent border-none cursor-pointer relative"
+              className="modern-black-btn"
             >
-              {isSubmitting ? 'Joining...' : 'Join the Waitlist'}
+              {isSubmitting ? 'Signing up...' : 'Sign Up'}
             </button>
 
             {submitMessage && (
