@@ -56,7 +56,7 @@ export default function EarlyAccessPage() {
       }
 
       // Save to Supabase
-      const { error } = await supabase.from('Claira-app').insert([
+      const { error } = await supabase.from('waitlist').insert([
         {
           email: formData.email,
           name: formData.name,
