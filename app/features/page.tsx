@@ -389,9 +389,6 @@ export default function FeaturesPage() {
                   <span className="scroll-word">Claira.</span>
                 </p>
               </div>
-              <a href="/early-access" className="modern-black-btn" style={{ minWidth: 220 }}>
-                Get Early Access
-              </a>
             </section>
           </div>
         </main>
