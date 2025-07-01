@@ -43,6 +43,7 @@ export default function EarlyAccessPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,7 +66,8 @@ export default function EarlyAccessPage() {
       ]);
       if (error) throw error;
 
-      setSubmitMessage('🎉 Welcome to the waitlist! We\'ll be in touch soon.');
+      setShowSuccessPopup(true);
+      setTimeout(() => setShowSuccessPopup(false), 4000);
       setFormData({ email: '', name: '', challenge: '' });
     } catch (error: any) {
       console.error('Signup error:', error, JSON.stringify(error));
@@ -106,6 +108,24 @@ export default function EarlyAccessPage() {
           <p className="text-[1rem] text-gray-600 font-light text-center mb-[80px] max-w-xl leading-relaxed">
             Join 500+ women who are ready for smarter period tracking
           </p>
+
+          {showSuccessPopup && (
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+              <div className="bg-white text-black px-8 py-6 rounded-xl shadow-lg border border-gray-200 animate-popup-success transition-all duration-300"
+                   style={{ minWidth: 320, maxWidth: '90vw', fontSize: '1.1rem', fontWeight: 500 }}>
+                Welcome to the waitlist! We&apos;ll be in touch soon.
+              </div>
+              <style jsx>{`
+                .animate-popup-success {
+                  animation: popup-fade-scale 0.4s cubic-bezier(0.4,0,0.2,1);
+                }
+                @keyframes popup-fade-scale {
+                  0% { opacity: 0; transform: scale(0.85) translateY(30px); }
+                  100% { opacity: 1; transform: scale(1) translateY(0); }
+                }
+              `}</style>
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
             <div>
