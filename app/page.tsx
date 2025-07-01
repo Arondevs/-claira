@@ -104,7 +104,7 @@ export default function HomePage() {
               </a>
               {/* Hamburger Icon (Mobile Only) */}
               <button
-                className="md:hidden ml-2 flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+                className="md:hidden ml-2 flex flex-col justify-center items-center w-10 h-10 focus:outline-none border border-red-500"
                 aria-label="Open menu"
                 onClick={() => setMobileMenuOpen(true)}
                 style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -240,200 +240,198 @@ export default function HomePage() {
             </p>
           </div>
         </section>
-
-        {/* Animations, Gradient, and Button Styles */}
-        <style jsx global>{`
-          html {
-            scroll-behavior: smooth;
-          }
-          .bg-cla-whitepink {
-            background: radial-gradient(ellipse 120% 80% at 50% 0%, #fff6fa 0%, #fdf7fb 60%, #fff 100%);
-          }
-          .reveal {
-            opacity: 0;
-            transform: translateY(48px);
-            transition: opacity 1s cubic-bezier(.4,0,.2,1), transform 1s cubic-bezier(.4,0,.2,1);
-          }
-          .reveal.revealed {
-            opacity: 1;
-            transform: none;
-          }
-          .logo-font {
-            font-family: 'Inter', 'SF Pro Display', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            font-size: 1.35rem;
-          }
-          .cluely-nav-link {
-            background: none;
-            border: none;
-            color: #18181b;
-            font-size: 0.97rem;
-            font-weight: 500;
-            padding: 0 0.5rem 0.1rem 0.5rem;
-            border-radius: 0;
-            cursor: pointer;
-            position: relative;
-            transition: color 0.18s;
-          }
-          .cluely-nav-link:after {
-            content: '';
-            display: block;
-            margin: 0 auto;
-            width: 0;
-            height: 2px;
-            background: #18181b;
-            transition: width 0.22s cubic-bezier(.4,0,.2,1);
-          }
-          .cluely-nav-link:hover:after {
-            width: 100%;
-          }
-          .cluely-nav-link:hover {
-            color: #18181b;
-          }
-          .cluely-nav-link.active {
-            color: #18181b;
-          }
-          .cluely-nav-link.active:after {
-            width: 100%;
-          }
-          .cluely-login-link {
-            color: #18181b;
-            font-size: 0.97rem;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 0 0.5rem;
-            border-radius: 8px;
-            transition: color 0.18s;
-          }
-          .cluely-login-link:hover {
-            color: #18181b;
-            text-decoration: underline;
-          }
-          .cluely-signup-btn {
-            display: inline-flex;
-            align-items: center;
-            background: transparent;
-            color: #000;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.97rem;
-            font-weight: 500;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            text-decoration: none;
-          }
-          .cluely-signup-btn::before,
-          .cluely-signup-btn::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: #000;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-          }
-          .cluely-signup-btn::before { top: 0; }
-          .cluely-signup-btn::after { bottom: 0; }
-          .cluely-signup-btn:hover::before,
-          .cluely-signup-btn:hover::after {
-            width: 100%;
-          }
-          .cluely-signup-btn:hover {
-            color: #000;
-          }
-          .cluely-cta-btn {
-            padding: 0.625rem 1.25rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            min-height: 38px;
-            background: transparent;
-            color: #000;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-          }
-          .cluely-cta-btn::before,
-          .cluely-cta-btn::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: #000;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-          }
-          .cluely-cta-btn::before { top: 0; }
-          .cluely-cta-btn::after { bottom: 0; }
-          .cluely-cta-btn:hover::before,
-          .cluely-cta-btn:hover::after {
-            width: 100%;
-          }
-          .cluely-cta-btn:hover {
-            color: #000;
-          }
-          .cluely-secondary-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            color: #d72660;
-            font-size: 1.08rem;
-            font-weight: 500;
-            text-decoration: underline;
-            transition: color 0.18s;
-            background: none;
-            border: none;
-            cursor: pointer;
-          }
-          .cluely-secondary-link:hover {
-            color: #111;
-          }
-          .subtitle-spaced {
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            word-break: keep-all;
-          }
-          a, button {
-            outline: none;
-          }
-          @media (max-width: 768px) {
-            .max-w-5xl, .max-w-7xl, .max-w-2xl {
-              padding-left: 0.5rem;
-              padding-right: 0.5rem;
-            }
-            h1 {
-              font-size: 2.1rem !important;
-            }
-            nav {
-              padding-left: 1rem !important;
-              padding-right: 1rem !important;
-            }
-          }
-          .nav-bar {
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-          }
-          .nav-visible {
-            transform: translateY(0);
-            opacity: 1;
-          }
-          .nav-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-          }
-          a[href="/"] {
-            text-decoration: none;
-            transition: opacity 0.18s ease;
-          }
-          a[href="/"]:hover {
-            opacity: 0.8;
-          }
-        `}</style>
       </div>
+      <style jsx global>{`
+        html {
+          scroll-behavior: smooth;
+        }
+        .bg-cla-whitepink {
+          background: radial-gradient(ellipse 120% 80% at 50% 0%, #fff6fa 0%, #fdf7fb 60%, #fff 100%);
+        }
+        .reveal {
+          opacity: 0;
+          transform: translateY(48px);
+          transition: opacity 1s cubic-bezier(.4,0,.2,1), transform 1s cubic-bezier(.4,0,.2,1);
+        }
+        .reveal.revealed {
+          opacity: 1;
+          transform: none;
+        }
+        .logo-font {
+          font-family: 'Inter', 'SF Pro Display', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+          font-weight: 600;
+          font-size: 1.35rem;
+        }
+        .cluely-nav-link {
+          background: none;
+          border: none;
+          color: #18181b;
+          font-size: 0.97rem;
+          font-weight: 500;
+          padding: 0 0.5rem 0.1rem 0.5rem;
+          border-radius: 0;
+          cursor: pointer;
+          position: relative;
+          transition: color 0.18s;
+        }
+        .cluely-nav-link:after {
+          content: '';
+          display: block;
+          margin: 0 auto;
+          width: 0;
+          height: 2px;
+          background: #18181b;
+          transition: width 0.22s cubic-bezier(.4,0,.2,1);
+        }
+        .cluely-nav-link:hover:after {
+          width: 100%;
+        }
+        .cluely-nav-link:hover {
+          color: #18181b;
+        }
+        .cluely-nav-link.active {
+          color: #18181b;
+        }
+        .cluely-nav-link.active:after {
+          width: 100%;
+        }
+        .cluely-login-link {
+          color: #18181b;
+          font-size: 0.97rem;
+          font-weight: 500;
+          text-decoration: none;
+          padding: 0 0.5rem;
+          border-radius: 8px;
+          transition: color 0.18s;
+        }
+        .cluely-login-link:hover {
+          color: #18181b;
+          text-decoration: underline;
+        }
+        .cluely-signup-btn {
+          display: inline-flex;
+          align-items: center;
+          background: transparent;
+          color: #000;
+          border: none;
+          padding: 0.5rem 1.2rem;
+          font-size: 0.97rem;
+          font-weight: 500;
+          cursor: pointer;
+          position: relative;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+        .cluely-signup-btn::before,
+        .cluely-signup-btn::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          width: 0;
+          height: 1px;
+          background: #000;
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+        }
+        .cluely-signup-btn::before { top: 0; }
+        .cluely-signup-btn::after { bottom: 0; }
+        .cluely-signup-btn:hover::before,
+        .cluely-signup-btn:hover::after {
+          width: 100%;
+        }
+        .cluely-signup-btn:hover {
+          color: #000;
+        }
+        .cluely-cta-btn {
+          padding: 0.625rem 1.25rem;
+          font-size: 0.875rem;
+          font-weight: 500;
+          min-height: 38px;
+          background: transparent;
+          color: #000;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+        }
+        .cluely-cta-btn::before,
+        .cluely-cta-btn::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          width: 0;
+          height: 1px;
+          background: #000;
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+        }
+        .cluely-cta-btn::before { top: 0; }
+        .cluely-cta-btn::after { bottom: 0; }
+        .cluely-cta-btn:hover::before,
+        .cluely-cta-btn:hover::after {
+          width: 100%;
+        }
+        .cluely-cta-btn:hover {
+          color: #000;
+        }
+        .cluely-secondary-link {
+          display: inline-block;
+          margin-top: 0.5rem;
+          color: #d72660;
+          font-size: 1.08rem;
+          font-weight: 500;
+          text-decoration: underline;
+          transition: color 0.18s;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        .cluely-secondary-link:hover {
+          color: #111;
+        }
+        .subtitle-spaced {
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+          word-break: keep-all;
+        }
+        a, button {
+          outline: none;
+        }
+        @media (max-width: 768px) {
+          .max-w-5xl, .max-w-7xl, .max-w-2xl {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+          }
+          h1 {
+            font-size: 2.1rem !important;
+          }
+          nav {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+          }
+        }
+        .nav-bar {
+          transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+        .nav-visible {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        .nav-hidden {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        a[href="/"] {
+          text-decoration: none;
+          transition: opacity 0.18s ease;
+        }
+        a[href="/"]:hover {
+          opacity: 0.8;
+        }
+      `}</style>
     </>
   );
 } 
