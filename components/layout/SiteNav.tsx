@@ -61,7 +61,7 @@ export default function SiteNav({ active }: { active?: "home" | "features" | "ea
         {/* Right Side */}
         <div className="flex items-center space-x-7">
           {active !== "early-access" && (
-            <a href="/early-access" className="modern-black-btn">
+            <a href="/early-access" className="modern-black-btn px-4 py-2 min-w-[96px] text-[0.97rem] font-semibold whitespace-nowrap">
               Sign Up
             </a>
           )}
