@@ -68,8 +68,11 @@ export default function EarlyAccessPage() {
       setSubmitMessage('🎉 Welcome to the waitlist! We\'ll be in touch soon.');
       setFormData({ email: '', name: '', challenge: '' });
     } catch (error: any) {
-      console.error('Signup error:', error);
-      setSubmitMessage(`❌ ${error.message || 'Signup failed. Please try again.'}`);
+      console.error('Signup error:', error, JSON.stringify(error));
+      let details = error.details || '';
+      let json = '';
+      try { json = JSON.stringify(error); } catch {}
+      setSubmitMessage(`❌ ${error.message || ''} ${details} ${json || ''}`.trim() || 'Signup failed. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
